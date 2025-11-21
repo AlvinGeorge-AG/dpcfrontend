@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 const register = async (user, formData, navigate) => {
-    const response = await axios.post(`https://digital-patient-card-backend-839268888277.asia-south1.run.app/${user}/register`, {
+    const response = await axios.post(`https://digital-patient-card-backend-839268888277.us-central1.run.app/${user}/register`, {
         "username": formData.username,
         "password": formData.password,
         "name": formData.name,

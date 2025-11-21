@@ -38,7 +38,7 @@ export default function PatientDashboard() {
     setLoading(true);
     try {
       const response = await axios.get(
-        "https://digital-patient-card-backend-839268888277.asia-south1.run.app/patient/dashboard"
+        "https://digital-patient-card-backend-839268888277.us-central1.run.app/patient/dashboard"
       );
       if (response.status >= 200 && response.status < 300) {
         const data = response.data;
@@ -69,7 +69,7 @@ export default function PatientDashboard() {
   const getDoctors = async () => {
     setLoading(true);
     try {
-      const response = await axios.post("https://digital-patient-card-backend-839268888277.asia-south1.run.app/admin/doctors/all");
+      const response = await axios.post("https://digital-patient-card-backend-839268888277.us-central1.run.app/admin/doctors/all");
       if (response.status >= 200 && response.status < 300) {
         setDoctors(await response.data);
         setLoading(false);
@@ -94,7 +94,7 @@ export default function PatientDashboard() {
     if (!username) return alert("Username not available");
     try {
       const response = await axios.get(
-        `https://digital-patient-card-backend-839268888277.asia-south1.run.app/download/patient-pdf`,
+        `https://digital-patient-card-backend-839268888277.us-central1.run.app/download/patient-pdf`,
         {
           params: { username },
           responseType: "blob",
@@ -117,7 +117,7 @@ export default function PatientDashboard() {
     if (!window.confirm(`Are you sure you want to delete the disease?`)) return;
     setLoading(true);
     try {
-      await axios.delete(`https://digital-patient-card-backend-839268888277.asia-south1.run.app/patient/delete-disease/${id}`);
+      await axios.delete(`https://digital-patient-card-backend-839268888277.us-central1.run.app/patient/delete-disease/${id}`);
       // Refresh the local diseases list (refetch or filter out the deleted one)
       getPatientData();
       setLoading(false);

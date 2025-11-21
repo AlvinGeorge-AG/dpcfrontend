@@ -18,7 +18,7 @@ export default function AdminDashboard() {
     const getPatients = async () => {
         setloading(true);
         try {
-            const response = await axios.post("https://digital-patient-card-backend-839268888277.asia-south1.run.app/admin/patients/all");
+            const response = await axios.post("https://digital-patient-card-backend-839268888277.us-central1.run.app/admin/patients/all");
             if (response.status >= 200 && response.status < 300) {
                 setPatients(response.data);
             }
@@ -33,7 +33,7 @@ export default function AdminDashboard() {
     const getDoctors = async () => {
         setloading(true);
         try {
-            const response = await axios.post("https://digital-patient-card-backend-839268888277.asia-south1.run.app/admin/doctors/all");
+            const response = await axios.post("https://digital-patient-card-backend-839268888277.us-central1.run.app/admin/doctors/all");
             if (response.status >= 200 && response.status < 300) {
                 setDoctors(response.data);
             }
@@ -48,7 +48,7 @@ export default function AdminDashboard() {
     const deleteDoctor = async (id, name) => {
         if (!window.confirm(`Are you sure you want to delete doctor ${name}?`)) return;
         try {
-            const response = await axios.delete(`https://digital-patient-card-backend-839268888277.asia-south1.run.app/admin/doctor/${id}`);
+            const response = await axios.delete(`https://digital-patient-card-backend-839268888277.us-central1.run.app/admin/doctor/${id}`);
             if (response.status >= 200 && response.status < 300) {
                 getDoctors();
                 alert("Doctor Deleted Successfully!");
@@ -61,7 +61,7 @@ export default function AdminDashboard() {
     const deletePatient = async (id, name) => {
         if (!window.confirm(`Are you sure you want to delete patient ${name}?`)) return;
         try {
-            const response = await axios.delete(`https://digital-patient-card-backend-839268888277.asia-south1.run.app/admin/patient/${id}`);
+            const response = await axios.delete(`https://digital-patient-card-backend-839268888277.us-central1.run.app/admin/patient/${id}`);
             if (response.status >= 200 && response.status < 300) {
                 getPatients();
                 alert("Patient Deleted Successfully!");
@@ -75,7 +75,7 @@ export default function AdminDashboard() {
     const verifyDoctor = async (id) => {
         setloading(true);
         try {
-            const response = await axios.post(`https://digital-patient-card-backend-839268888277.asia-south1.run.app/admin/verify/doctor/${id}`);
+            const response = await axios.post(`https://digital-patient-card-backend-839268888277.us-central1.run.app/admin/verify/doctor/${id}`);
             if (response.status >= 200 && response.status < 300) {
                 console.log(await response.data);
                 getDoctors();
@@ -88,7 +88,7 @@ export default function AdminDashboard() {
             setloading(false);
         }
     }
-        const closeModal = () => {
+    const closeModal = () => {
         setSelectedUser(null);
         setUserType("");
     };
@@ -165,7 +165,7 @@ export default function AdminDashboard() {
     ];
 
     return (
-         <div className="flex flex-col md:flex-row h-screen bg-gray-50">
+        <div className="flex flex-col md:flex-row h-screen bg-gray-50">
             {loading && <LoadingModal message="Loading Admin Dashboard...." />}
 
             {/* Mobile Header */}
@@ -248,67 +248,67 @@ export default function AdminDashboard() {
                 )}
 
                 {/* Patients */}
-{active === "patients" && (
-  <div>
-    <h3 className="text-xl font-semibold mb-4">All Patients</h3>
-    {patients.length > 0 ? (
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {patients.map((p) => (
-          <div
-            key={p.id}
-            className="p-4 bg-white rounded-lg shadow border flex flex-col justify-between"
-          >
-            <div>
-              <p className="font-medium text-lg">{p.name}</p>
-              <p className="text-sm text-gray-500">ID: {p.id}</p>
-              <p className="text-sm text-gray-500">Age: {p.age}</p>
-              <p className="text-sm text-gray-500">Blood Group: {p.bloodgroup}</p>
-            </div>
-            <button
-              onClick={() => { setSelectedUser(p); setUserType("patient"); }}
-              className="mt-2 px-3 py-1 bg-cyan-600 text-white rounded hover:bg-cyan-500 text-sm"
-            >
-              View
-            </button>
-          </div>
-        ))}
-      </div>
-    ) : (
-      <p className="text-gray-500">No patients found.</p>
-    )}
-  </div>
-)}
+                {active === "patients" && (
+                    <div>
+                        <h3 className="text-xl font-semibold mb-4">All Patients</h3>
+                        {patients.length > 0 ? (
+                            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                                {patients.map((p) => (
+                                    <div
+                                        key={p.id}
+                                        className="p-4 bg-white rounded-lg shadow border flex flex-col justify-between"
+                                    >
+                                        <div>
+                                            <p className="font-medium text-lg">{p.name}</p>
+                                            <p className="text-sm text-gray-500">ID: {p.id}</p>
+                                            <p className="text-sm text-gray-500">Age: {p.age}</p>
+                                            <p className="text-sm text-gray-500">Blood Group: {p.bloodgroup}</p>
+                                        </div>
+                                        <button
+                                            onClick={() => { setSelectedUser(p); setUserType("patient"); }}
+                                            className="mt-2 px-3 py-1 bg-cyan-600 text-white rounded hover:bg-cyan-500 text-sm"
+                                        >
+                                            View
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <p className="text-gray-500">No patients found.</p>
+                        )}
+                    </div>
+                )}
 
-{/* Doctors */}
-{active === "doctors" && (
-  <div>
-    <h3 className="text-xl font-semibold mb-4">All Doctors</h3>
-    {doctors.length > 0 ? (
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {doctors.map((d) => (
-          <div
-            key={d.id}
-            className="p-4 bg-white rounded-lg shadow border flex flex-col justify-between"
-          >
-            <div>
-              <p className="font-medium text-lg">{d.name}</p>
-              <p className="text-sm text-gray-500">ID: {d.id}</p>
-              <p className="text-sm text-gray-500">Specialization: {d.specialization || "N/A"}</p>
-            </div>
-            <button
-              onClick={() => { setSelectedUser(d); setUserType("doctor"); }}
-              className="mt-2 px-3 py-1 bg-cyan-600 text-white rounded hover:bg-cyan-500 text-sm"
-            >
-              View
-            </button>
-          </div>
-        ))}
-      </div>
-    ) : (
-      <p className="text-gray-500">No doctors found.</p>
-    )}
-  </div>
-)}
+                {/* Doctors */}
+                {active === "doctors" && (
+                    <div>
+                        <h3 className="text-xl font-semibold mb-4">All Doctors</h3>
+                        {doctors.length > 0 ? (
+                            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                                {doctors.map((d) => (
+                                    <div
+                                        key={d.id}
+                                        className="p-4 bg-white rounded-lg shadow border flex flex-col justify-between"
+                                    >
+                                        <div>
+                                            <p className="font-medium text-lg">{d.name}</p>
+                                            <p className="text-sm text-gray-500">ID: {d.id}</p>
+                                            <p className="text-sm text-gray-500">Specialization: {d.specialization || "N/A"}</p>
+                                        </div>
+                                        <button
+                                            onClick={() => { setSelectedUser(d); setUserType("doctor"); }}
+                                            className="mt-2 px-3 py-1 bg-cyan-600 text-white rounded hover:bg-cyan-500 text-sm"
+                                        >
+                                            View
+                                        </button>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <p className="text-gray-500">No doctors found.</p>
+                        )}
+                    </div>
+                )}
 
                 {/* Render modal if user selected */}
                 {selectedUser && <UserDetailModal user={selectedUser} type={userType} />}

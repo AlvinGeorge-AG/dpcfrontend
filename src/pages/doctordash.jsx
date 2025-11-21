@@ -21,7 +21,7 @@ export default function DoctorDashboard() {
     const doctordashboard = async () => {
         setloading(true);
         try {
-            const response = await axios.get("https://digital-patient-card-backend-839268888277.asia-south1.run.app/doctor/dashboard");
+            const response = await axios.get("https://digital-patient-card-backend-839268888277.us-central1.run.app/doctor/dashboard");
             if (response.status >= 200 && response.status < 300) {
                 setDoctorDetails(response.data);
             }
@@ -36,7 +36,7 @@ export default function DoctorDashboard() {
 
     const findpatients = async () => {
         try {
-            const response = await axios.post("https://digital-patient-card-backend-839268888277.asia-south1.run.app/admin/patients/all");
+            const response = await axios.post("https://digital-patient-card-backend-839268888277.us-central1.run.app/admin/patients/all");
             if (response.status >= 200 && response.status < 300) {
                 setpatients(response.data);
             }
@@ -52,7 +52,7 @@ export default function DoctorDashboard() {
 
     const getDoctors = async () => {
         try {
-            const response = await axios.post("https://digital-patient-card-backend-839268888277.asia-south1.run.app/admin/doctors/all");
+            const response = await axios.post("https://digital-patient-card-backend-839268888277.us-central1.run.app/admin/doctors/all");
             if (response.status >= 200 && response.status < 300) {
                 setDoctors(response.data);
             }
@@ -87,7 +87,7 @@ export default function DoctorDashboard() {
     const verifyDisease = async (patientId, diseaseid) => {
         setloading(true);
         try {
-            const response = await axios.post("https://digital-patient-card-backend-839268888277.asia-south1.run.app/doctor/verify", null, {
+            const response = await axios.post("https://digital-patient-card-backend-839268888277.us-central1.run.app/doctor/verify", null, {
                 params: { patientId, diseaseid }
             });
             if (response.status >= 200 && response.status < 300) {
@@ -112,7 +112,7 @@ export default function DoctorDashboard() {
         }
         setloading(true);
         try {
-            const response = await axios.post("https://digital-patient-card-backend-839268888277.asia-south1.run.app/doctor/refer", null, {
+            const response = await axios.post("https://digital-patient-card-backend-839268888277.us-central1.run.app/doctor/refer", null, {
                 params: {
                     patientusername: referral.patientUsername,
                     referredDoctorUsername: referral.referredDoctorUsername,
@@ -136,7 +136,7 @@ export default function DoctorDashboard() {
         if (!username) return alert("Username not available");
         try {
             const response = await axios.get(
-                `https://digital-patient-card-backend-839268888277.asia-south1.run.app/download/patient-pdf`,
+                `https://digital-patient-card-backend-839268888277.us-central1.run.app/download/patient-pdf`,
                 {
                     params: { username },
                     responseType: "blob",
