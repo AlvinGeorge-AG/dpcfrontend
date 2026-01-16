@@ -18,7 +18,7 @@ export default function AdminDashboard() {
     const getPatients = async () => {
         setloading(true);
         try {
-            const response = await axios.post("https://digital-patient-card-backend-839268888277.us-central1.run.app/admin/patients/all");
+            const response = await axios.post("https://digitalpatientcardbackend.onrender.com/admin/patients/all");
             if (response.status >= 200 && response.status < 300) {
                 setPatients(response.data);
             }
@@ -33,7 +33,7 @@ export default function AdminDashboard() {
     const getDoctors = async () => {
         setloading(true);
         try {
-            const response = await axios.post("https://digital-patient-card-backend-839268888277.us-central1.run.app/admin/doctors/all");
+            const response = await axios.post("https://digitalpatientcardbackend.onrender.com/admin/doctors/all");
             if (response.status >= 200 && response.status < 300) {
                 setDoctors(response.data);
             }
@@ -48,7 +48,7 @@ export default function AdminDashboard() {
     const deleteDoctor = async (id, name) => {
         if (!window.confirm(`Are you sure you want to delete doctor ${name}?`)) return;
         try {
-            const response = await axios.delete(`https://digital-patient-card-backend-839268888277.us-central1.run.app/admin/doctor/${id}`);
+            const response = await axios.delete(`https://digitalpatientcardbackend.onrender.com/admin/doctor/${id}`);
             if (response.status >= 200 && response.status < 300) {
                 getDoctors();
                 alert("Doctor Deleted Successfully!");
@@ -61,7 +61,7 @@ export default function AdminDashboard() {
     const deletePatient = async (id, name) => {
         if (!window.confirm(`Are you sure you want to delete patient ${name}?`)) return;
         try {
-            const response = await axios.delete(`https://digital-patient-card-backend-839268888277.us-central1.run.app/admin/patient/${id}`);
+            const response = await axios.delete(`https://digitalpatientcardbackend.onrender.com/admin/patient/${id}`);
             if (response.status >= 200 && response.status < 300) {
                 getPatients();
                 alert("Patient Deleted Successfully!");
@@ -75,7 +75,7 @@ export default function AdminDashboard() {
     const verifyDoctor = async (id) => {
         setloading(true);
         try {
-            const response = await axios.post(`https://digital-patient-card-backend-839268888277.us-central1.run.app/admin/verify/doctor/${id}`);
+            const response = await axios.post(`https://digitalpatientcardbackend.onrender.com/admin/verify/doctor/${id}`);
             if (response.status >= 200 && response.status < 300) {
                 console.log(await response.data);
                 getDoctors();

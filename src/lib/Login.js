@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const login = async (user, username, password, navigate, setloading, adminpin = "") => {
     setloading(true);
     try {
-        const response = await axios.post(`https://digital-patient-card-backend-839268888277.us-central1.run.app/${user}/login`, null, {
+        const response = await axios.post(`https://digitalpatientcardbackend.onrender.com/${user}/login`, null, {
             params: {
                 username,
                 password,

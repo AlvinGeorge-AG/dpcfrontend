@@ -29,7 +29,7 @@ export default function AppointmentDiseasesPage() {
         setLoading(true);
         try {
             const response = await axios.get(
-                "https://digital-patient-card-backend-839268888277.us-central1.run.app/patient/dashboard"
+                "https://digitalpatientcardbackend.onrender.com/patient/dashboard"
             );
             if (response.status >= 200 && response.status < 300) {
                 const data = response.data;
@@ -47,7 +47,7 @@ export default function AppointmentDiseasesPage() {
 
     const getDoctors = async () => {
         try {
-            const response = await axios.post("https://digital-patient-card-backend-839268888277.us-central1.run.app/admin/doctors/all");
+            const response = await axios.post("https://digitalpatientcardbackend.onrender.com/admin/doctors/all");
             if (response.status >= 200 && response.status < 300) {
                 setDoctors(response.data);
             }
@@ -76,7 +76,7 @@ export default function AppointmentDiseasesPage() {
         if (!diseaseInput) return;
         try {
             const response = await axios.post(
-                "https://digital-patient-card-backend-839268888277.us-central1.run.app/patient/adddisease",
+                "https://digitalpatientcardbackend.onrender.com/patient/adddisease",
                 null,
                 { params: { description: diseaseInput, specialization: specialization } }
             );
@@ -95,7 +95,7 @@ export default function AppointmentDiseasesPage() {
         if (!window.confirm(`Are you sure you want to delete the disease?`)) return;
         setLoading(true);
         try {
-            await axios.delete(`https://digital-patient-card-backend-839268888277.us-central1.run.app/patient/delete-disease/${id}`);
+            await axios.delete(`https://digitalpatientcardbackend.onrender.com/patient/delete-disease/${id}`);
             // Refresh the local diseases list (refetch or filter out the deleted one)
             getPatientData();
             setLoading(false);
