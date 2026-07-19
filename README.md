@@ -18,7 +18,7 @@ The Digital Patient Card Frontend is a user-friendly React application designed 
 - **Doctor Login:** Access your professional dashboard securely.
 - **Patient Search:** Quickly find patients by username.
 - **Disease Verification:** Approve or reject reported diseases.
-- **Referral Management:** Refer patients to specialists and track referrals.
+- **Referral Management:** Refer patients to specialists and track referrals..
 
 ### For Admins
 - **Admin Login:** Secure portal for system management.
